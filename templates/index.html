@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Diabetes Prediction</title>
+</head>
+<body>
+  <h2>Diabetes Prediction</h2>
+  <form method="POST" action="/predict">
+    <label>Age:
+      <input type="number" name="Age" required>
+    </label><br><br>
+    <label>Gender:
+      <select name="Gender" required>
+        <option value="0">Female</option>
+        <option value="1">Male</option>
+      </select>
+    </label><br><br>
+    <label>Polyuria:
+      <select name="Polyuria" required>
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+      </select>
+    </label><br><br>
+    <label>Polydipsia:
+      <select name="Polydipsia" required>
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+      </select>
+    </label><br><br>
+    <label>Sudden Weight Loss:
+      <select name="sudden_weight_loss" required>
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+      </select>
+    </label><br><br>
+    <label>Weakness:
+      <select name="weakness" required>
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+      </select>
+    </label><br><br>
+    <label>Polyphagia:
+      <select name="Polyphagia" required>
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+      </select>
+    </label><br><br>
+    <label>Genital Thrush:
+      <select name="Genital_thrush" required>
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+      </select>
+    </label><br><br>
+    <label>Visual Blurring:
+      <select name="visual_blurring" required>
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+      </select>
+    </label><br><br>
+    <label>Itching:
+      <select name="Itching" required>
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+      </select>
+    </label><br><br>
+    <label>Irritability:
+      <select name="Irritability" required>
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+      </select>
+    </label><br><br>
+    <label>Delayed Healing:
+      <select name="delayed_healing" required>
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+      </select>
+    </label><br><br>
+    <label>Partial Paresis:
+      <select name="partial_paresis" required>
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+      </select>
+    </label><br><br>
+    <label>Muscle Stiffness:
+      <select name="muscle_stiffness" required>
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+      </select>
+    </label><br><br>
+    <label>Alopecia:
+      <select name="Alopecia" required>
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+      </select>
+    </label><br><br>
+    <label>Obesity:
+      <select name="Obesity" required>
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+      </select>
+    </label><br><br>
+    <input type="submit" value="Predict">
+  </form>
+  {% if result %}
+    <h3>Prediction: {{ result }}</h3>
+  {% endif %}
+</body>
+</html>
