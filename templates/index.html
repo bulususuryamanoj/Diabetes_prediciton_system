@@ -1,108 +1,177 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Diabetes Prediction</title>
+  <title>Diabetes Prediction - Compact</title>
 </head>
-<body>
-  <h2>Diabetes Prediction</h2>
-  <form method="POST" action="/predict">
-    <label>Age:
-      <input type="number" name="Age" required>
-    </label><br><br>
-    <label>Gender:
-      <select name="Gender" required>
-        <option value="0">Female</option>
-        <option value="1">Male</option>
-      </select>
-    </label><br><br>
-    <label>Polyuria:
-      <select name="Polyuria" required>
-        <option value="0">No</option>
-        <option value="1">Yes</option>
-      </select>
-    </label><br><br>
-    <label>Polydipsia:
-      <select name="Polydipsia" required>
-        <option value="0">No</option>
-        <option value="1">Yes</option>
-      </select>
-    </label><br><br>
-    <label>Sudden Weight Loss:
-      <select name="sudden_weight_loss" required>
-        <option value="0">No</option>
-        <option value="1">Yes</option>
-      </select>
-    </label><br><br>
-    <label>Weakness:
-      <select name="weakness" required>
-        <option value="0">No</option>
-        <option value="1">Yes</option>
-      </select>
-    </label><br><br>
-    <label>Polyphagia:
-      <select name="Polyphagia" required>
-        <option value="0">No</option>
-        <option value="1">Yes</option>
-      </select>
-    </label><br><br>
-    <label>Genital Thrush:
-      <select name="Genital_thrush" required>
-        <option value="0">No</option>
-        <option value="1">Yes</option>
-      </select>
-    </label><br><br>
-    <label>Visual Blurring:
-      <select name="visual_blurring" required>
-        <option value="0">No</option>
-        <option value="1">Yes</option>
-      </select>
-    </label><br><br>
-    <label>Itching:
-      <select name="Itching" required>
-        <option value="0">No</option>
-        <option value="1">Yes</option>
-      </select>
-    </label><br><br>
-    <label>Irritability:
-      <select name="Irritability" required>
-        <option value="0">No</option>
-        <option value="1">Yes</option>
-      </select>
-    </label><br><br>
-    <label>Delayed Healing:
-      <select name="delayed_healing" required>
-        <option value="0">No</option>
-        <option value="1">Yes</option>
-      </select>
-    </label><br><br>
-    <label>Partial Paresis:
-      <select name="partial_paresis" required>
-        <option value="0">No</option>
-        <option value="1">Yes</option>
-      </select>
-    </label><br><br>
-    <label>Muscle Stiffness:
-      <select name="muscle_stiffness" required>
-        <option value="0">No</option>
-        <option value="1">Yes</option>
-      </select>
-    </label><br><br>
-    <label>Alopecia:
-      <select name="Alopecia" required>
-        <option value="0">No</option>
-        <option value="1">Yes</option>
-      </select>
-    </label><br><br>
-    <label>Obesity:
-      <select name="Obesity" required>
-        <option value="0">No</option>
-        <option value="1">Yes</option>
-      </select>
-    </label><br><br>
-    <input type="submit" value="Predict">
-  </form>
-  {% if result %}
-    <h3>Prediction: {{ result }}</h3>
-  {% endif %}
+
+<!-- Page background color using pure HTML -->
+<body bgcolor="#f0f8ff" text="#000000">
+
+<h2 style="text-align: center;";"><font color="#003366">Diabetes Prediction System</font></h2>
+
+<!-- Table background colors using HTML attributes -->
+<table border="1" cellpadding="6" cellspacing="0" width="100%" bgcolor="#ffffff">
+  <tr>
+
+    <!-- LEFT SIDE -->
+    <td width="60%" valign="top" bgcolor="#e8f4ff">
+
+      <form method="POST" action="/predict">
+
+        <table cellpadding="4" cellspacing="0" border="0" width="100%" bgcolor="#e8f4ff">
+
+          <tr bgcolor="#d8ecff">
+            <td><small>Age</small><br><input type="number" name="Age" required style="width:95%"></td>
+            <td><small>Gender</small><br>
+              <select name="Gender" required style="width:95%">
+                <option value="" disabled selected>--</option>
+                <option value="0">Female</option>
+                <option value="1">Male</option>
+              </select>
+            </td>
+            <td><small>Polyuria</small><br>
+              <select name="Polyuria" required style="width:95%">
+                <option value="" disabled selected>--</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+
+          <tr bgcolor="#e8f4ff">
+            <td><small>Polydipsia</small><br>
+              <select name="Polydipsia" required style="width:95%">
+                <option value="" disabled selected>--</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select>
+            </td>
+
+            <td><small>Sudden WL</small><br>
+              <select name="sudden_weight_loss" required style="width:95%">
+                <option value="" disabled selected>--</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select>
+            </td>
+
+            <td><small>Weakness</small><br>
+              <select name="weakness" required style="width:95%">
+                <option value="" disabled selected>--</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+
+          <tr bgcolor="#d8ecff">
+            <td><small>Polyphagia</small><br>
+              <select name="Polyphagia" required style="width:95%">
+                <option value="" disabled selected>--</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select>
+            </td>
+            <td><small>Genital Thrush</small><br>
+              <select name="Genital_thrush" required style="width:95%">
+                <option value="" disabled selected>--</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select>
+            </td>
+            <td><small>Visual Blur</small><br>
+              <select name="visual_blurring" required style="width:95%">
+                <option value="" disabled selected>--</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+
+          <tr bgcolor="#e8f4ff">
+            <td><small>Itching</small><br>
+              <select name="Itching" required style="width:95%">
+                <option value="" disabled selected>--</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select>
+            </td>
+            <td><small>Irritability</small><br>
+              <select name="Irritability" required style="width:95%">
+                <option value="" disabled selected>--</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select>
+            </td>
+            <td><small>Delayed Heal</small><br>
+              <select name="delayed_healing" required style="width:95%">
+                <option value="" disabled selected>--</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+
+          <tr bgcolor="#d8ecff">
+            <td><small>Partial Paresis</small><br>
+              <select name="partial_paresis" required style="width:95%">
+                <option value="" disabled selected>--</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select>
+            </td>
+            <td><small>Muscle Stiff</small><br>
+              <select name="muscle_stiffness" required style="width:95%">
+                <option value="" disabled selected>--</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select>
+            </td>
+            <td><small>Alopecia</small><br>
+              <select name="Alopecia" required style="width:95%">
+                <option value="" disabled selected>--</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select>
+            </td>
+          </tr>
+
+          <tr bgcolor="#e8f4ff">
+            <td colspan="2"><small>Obesity</small><br>
+              <select name="Obesity" required style="width:95%">
+                <option value="" disabled selected>--</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select>
+            </td>
+            <td align="center" valign="middle">
+              <input type="submit" value="Predict">
+            </td>
+          </tr>
+
+        </table>
+
+      </form>
+
+    </td>
+
+    <!-- RIGHT SIDE -->
+    <td width="40%" valign="top" bgcolor="#fff8e1">
+
+      {% if result %}
+      <h3><font color="#cc0000">Prediction</font></h3>
+      <p><strong>{{ result }}</strong></p>
+
+      <p><a href="/">Try again</a></p>
+
+      {% else %}
+      <h3><font color="#004d80">Prediction output will appear here</font></h3>
+      <p>Fill the form and press Predict.</p>
+      {% endif %}
+
+    </td>
+  </tr>
+</table>
+
 </body>
 </html>
