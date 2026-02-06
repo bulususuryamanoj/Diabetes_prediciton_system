@@ -1,4 +1,5 @@
 import pickle
+import os
 from flask import Flask,render_template,request
 saved_model = "model.pkl"
 with open(saved_model,'rb') as file:
@@ -56,4 +57,5 @@ def predict():
         obesity=obesity
     )
 if __name__ == "__main__":
-    app.run(host='0.0.0.0',debug=False)
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host='0.0.0.0',debug=False,port=)
