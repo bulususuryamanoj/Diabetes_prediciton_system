@@ -1,45 +1,61 @@
-import numpy as np
 import pickle
+import os
 from flask import Flask,render_template,request
-saved_model = r"D:\python\EDA_Workshop\model.pkl"
+saved_model = "model.pkl"
 with open(saved_model,'rb') as file:
-    model = pickle.load(saved_model)
+    model = pickle.load(file)
 app = Flask(__name__)
- 
+
 @app.route('/')
 def home():
     return render_template('index.html')
 @app.route('/predict',methods = ['POST'])
 def predict():
-    try:
-        Age = int(request.form.get('Age'))
-        Gender = int(request.form.get('Gender'))
-        Polyuria=int(request.form.get('Polyuria'))
-        Polydipsia= int(request.form.get('Polydipsia'))
-        sudden_weight_loss= int(request.form.get('sudden_weight_loss'))
-        weakness = int(request.form.get('weakness'))
-        Polyphagia = int(request.form.get('Polyphagia'))
-        Genital_thrush = int(request.form.get('Genital_thrush'))
-        visual_blurring = int(request.form.get('visual_blurring'))
-        Itching = int(request.form.get("Itching"))
-        Irritability = int(request.form.get("Irritability"))
-        delayed_healing = int(request.form.get('delayed_healing'))
-        partial_paresis = int(request.form.get('partial_paresis'))
-        muscle_stiffness = int(request.form.get('muscle_stiffness'))
-        Alopecia=int(request.form.get('Alopecia'))
-        Obesity = int(request.form.get('Obesity'))
-        
-        input_data = np.array(Age,Gender,Polyuria,Polydipsia,sudden_weight_loss,weakness,Polyphagia,Genital_thrush,visual_blurring,Itching,Irritability,delayed_healing,partial_paresis,muscle_stiffness,Alopecia,Obesity)
+    age = int(request.form['Age'])
+    gender = int(request.form['Gender'])
+    polyuria = int(request.form['Polyuria'])
+    polydipsia = int(request.form['Polydipsia'])
+    sudden_weight_loss = int(request.form['sudden_weight_loss'])
+    weakness = int(request.form['weakness'])
+    polyphagia = int(request.form['Polyphagia'])
+    genital_thrush = int(request.form['Genital_thrush'])
+    visual_blurring = int(request.form['visual_blurring'])
+    itching = int(request.form['Itching'])
+    irritability = int(request.form['Irritability'])
+    delayed_healing = int(request.form['delayed_healing'])
+    partial_paresis = int(request.form['partial_paresis'])
+    muscle_stiffness = int(request.form['muscle_stiffness'])
+    alopecia = int(request.form['Alopecia'])
+    obesity = int(request.form['Obesity'])
 
-        predictions = model.predict(input_data)
-        
-        if predictions[0] == 0:
-            result = 'No Diabetes'
-        else:
-            result = 'Diabetes'
-        return render_template('index.html',result=result)
-    except Exception as e:
-        return f"{e} error has occured"
-    
+    input_data = [[
+        age, gender, polyuria, polydipsia, sudden_weight_loss, weakness,
+        polyphagia, genital_thrush, visual_blurring, itching, irritability,
+        delayed_healing, partial_paresis, muscle_stiffness, alopecia, obesity
+    ]]
+
+    prediction = int(model.predict(input_data)[0])
+
+    return render_template(
+        'result.html',
+        prediction=prediction,
+        age=age,
+        gender=gender,
+        polyuria=polyuria,
+        polydipsia=polydipsia,
+        sudden_weight_loss=sudden_weight_loss,
+        weakness=weakness,
+        polyphagia=polyphagia,
+        genital_thrush=genital_thrush,
+        visual_blurring=visual_blurring,
+        itching=itching,
+        irritability=irritability,
+        delayed_healing=delayed_healing,
+        partial_paresis=partial_paresis,
+        muscle_stiffness=muscle_stiffness,
+        alopecia=alopecia,
+        obesity=obesity
+    )
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host='0.0.0.0',debug=False,port=)
